@@ -3,12 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useEffect, useState } from 'react';
 import { getProfile } from '../storage/userProfile';
 
-import WelcomeScreen from '../screens/onboarding/WelcomeScreen';
+import LoadingScreen from '../screens/onboarding/LoadingScreen';
+import UnitSelectionScreen from '../screens/onboarding/UnitSelectionScreen';
 import ProfileScreen from '../screens/onboarding/ProfileScreen';
-import BodyStatsScreen from '../screens/onboarding/BodyStatsScreen';
-import GoalsScreen from '../screens/onboarding/GoalsScreen';
-import ScheduleScreen from '../screens/onboarding/ScheduleScreen';
-import FitnessLevelScreen from '../screens/onboarding/FitnessLevelScreen';
+import BodyInfoScreen from '../screens/onboarding/BodyInfoScreen';
+import TrainingScreen from '../screens/onboarding/TrainingScreen';
+import NutritionSetupScreen from '../screens/onboarding/NutritionSetupScreen';
+import FoodPreferencesScreen from '../screens/onboarding/FoodPreferencesScreen';
+import NutritionGoalScreen from '../screens/onboarding/NutritionGoalScreen';
 import MainScreen from '../screens/MainScreen';
 
 const Stack = createStackNavigator();
@@ -18,7 +20,7 @@ export default function Navigation() {
 
   useEffect(() => {
     getProfile().then(profile => {
-      setInitialRoute(profile.onboardingComplete ? 'Main' : 'Welcome');
+      setInitialRoute(profile.onboardingComplete ? 'Main' : 'Loading');
     });
   }, []);
 
@@ -30,12 +32,14 @@ export default function Navigation() {
         initialRouteName={initialRoute}
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
       >
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+        <Stack.Screen name="UnitSelection" component={UnitSelectionScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="BodyStats" component={BodyStatsScreen} />
-        <Stack.Screen name="Goals" component={GoalsScreen} />
-        <Stack.Screen name="Schedule" component={ScheduleScreen} />
-        <Stack.Screen name="FitnessLevel" component={FitnessLevelScreen} />
+        <Stack.Screen name="BodyInfo" component={BodyInfoScreen} />
+        <Stack.Screen name="Training" component={TrainingScreen} />
+        <Stack.Screen name="NutritionSetup" component={NutritionSetupScreen} />
+        <Stack.Screen name="FoodPreferences" component={FoodPreferencesScreen} />
+        <Stack.Screen name="NutritionGoal" component={NutritionGoalScreen} />
         <Stack.Screen name="Main" component={MainScreen} />
       </Stack.Navigator>
     </NavigationContainer>
