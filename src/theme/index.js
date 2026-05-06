@@ -26,6 +26,8 @@ export const lightColors = {
   scheme: 'light',
 };
 
+export const colors = darkColors;
+
 export const spacing = {
   xs: 4,
   sm: 8,
