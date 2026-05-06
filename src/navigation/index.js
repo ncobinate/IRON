@@ -12,7 +12,7 @@ import TrainingScreen from '../screens/onboarding/TrainingScreen';
 import NutritionSetupScreen from '../screens/onboarding/NutritionSetupScreen';
 import FoodPreferencesScreen from '../screens/onboarding/FoodPreferencesScreen';
 import NutritionGoalScreen from '../screens/onboarding/NutritionGoalScreen';
-import MainScreen from '../screens/MainScreen';
+import MainTabs from './MainTabs';
 
 const Stack = createStackNavigator();
 
@@ -51,7 +51,7 @@ export default function Navigation() {
         <Stack.Screen name="NutritionSetup" component={NutritionSetupScreen} />
         <Stack.Screen name="FoodPreferences" component={FoodPreferencesScreen} />
         <Stack.Screen name="NutritionGoal" component={NutritionGoalScreen} />
-        <Stack.Screen name="Main" component={MainScreen} />
+        <Stack.Screen name="Main" component={MainTabs} />
       </Stack.Navigator>
     </NavigationContainer>
   );
