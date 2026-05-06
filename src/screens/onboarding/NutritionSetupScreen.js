@@ -24,6 +24,7 @@ const NATIONALITIES = [
 export default function NutritionSetupScreen({ navigation }) {
   const [restrictions, setRestrictions] = useState([]);
   const [nationality, setNationality] = useState(null);
+  const [customNationality, setCustomNationality] = useState('');
 
   function toggleRestriction(id) {
     if (id === 'none') { setRestrictions(['none']); return; }
@@ -34,7 +35,8 @@ export default function NutritionSetupScreen({ navigation }) {
   }
 
   async function handleNext() {
-    await saveProfile({ dietaryRestrictions: restrictions, nationality });
+    const finalNationality = nationality === 'Other' ? customNationality.trim() || 'Other' : nationality;
+    await saveProfile({ dietaryRestrictions: restrictions, nationality: finalNationality });
     navigation.navigate('FoodPreferences');
   }
 
@@ -77,6 +79,18 @@ export default function NutritionSetupScreen({ navigation }) {
               );
             })}
           </View>
+
+          {nationality === 'Other' && (
+            <TextInput
+              style={styles.customInput}
+              value={customNationality}
+              onChangeText={setCustomNationality}
+              placeholder="Enter your background..."
+              placeholderTextColor={colors.textMuted}
+              autoFocus
+              returnKeyType="done"
+            />
+          )}
         </Section>
 
         <TouchableOpacity style={styles.skipBtn} onPress={() => navigation.navigate('FoodPreferences')}>
@@ -130,6 +144,11 @@ const styles = StyleSheet.create({
   natBtnActive: { borderColor: colors.primary, backgroundColor: colors.primary + '15' },
   natText: { fontSize: font.sizes.sm, color: colors.textSecondary },
   natTextActive: { color: colors.primary, fontWeight: font.weights.semibold },
+  customInput: {
+    backgroundColor: colors.card, borderRadius: 12, paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md, color: colors.text, fontSize: font.sizes.md,
+    borderWidth: 1.5, borderColor: colors.primary, marginTop: spacing.xs,
+  },
   skipBtn: { alignSelf: 'center', paddingVertical: spacing.sm },
   skipText: { fontSize: font.sizes.sm, color: colors.textMuted, textDecorationLine: 'underline' },
   footer: { paddingHorizontal: spacing.xl, paddingBottom: spacing.xl },
