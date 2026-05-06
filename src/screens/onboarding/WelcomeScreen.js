@@ -20,7 +20,7 @@ export default function WelcomeScreen({ navigation }) {
       <View style={styles.footer}>
         <TouchableOpacity
           style={styles.primaryButton}
-          onPress={() => navigation.navigate('Name')}
+          onPress={() => navigation.navigate('Profile')}
         >
           <Text style={styles.primaryButtonText}>Get Started</Text>
         </TouchableOpacity>

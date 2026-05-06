@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getProfile } from '../storage/userProfile';
 
 import WelcomeScreen from '../screens/onboarding/WelcomeScreen';
-import NameScreen from '../screens/onboarding/NameScreen';
+import ProfileScreen from '../screens/onboarding/ProfileScreen';
 import BodyStatsScreen from '../screens/onboarding/BodyStatsScreen';
 import GoalsScreen from '../screens/onboarding/GoalsScreen';
 import ScheduleScreen from '../screens/onboarding/ScheduleScreen';
@@ -31,7 +31,7 @@ export default function Navigation() {
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Name" component={NameScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
         <Stack.Screen name="BodyStats" component={BodyStatsScreen} />
         <Stack.Screen name="Goals" component={GoalsScreen} />
         <Stack.Screen name="Schedule" component={ScheduleScreen} />

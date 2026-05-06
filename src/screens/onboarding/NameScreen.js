@@ -15,7 +15,7 @@ export default function NameScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StepBar current={1} total={5} />
+      <StepBar current={1} total={6} />
 
       <View style={styles.content}>
         <Text style={styles.question}>What should we{'\n'}call you?</Text>

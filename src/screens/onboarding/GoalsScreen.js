@@ -28,7 +28,7 @@ export default function GoalsScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StepBar current={3} total={5} />
+      <StepBar current={3} total={6} />
 
       <View style={styles.content}>
         <View>

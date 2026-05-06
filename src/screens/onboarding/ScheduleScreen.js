@@ -29,7 +29,7 @@ export default function ScheduleScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StepBar current={4} total={5} />
+      <StepBar current={4} total={6} />
 
       <View style={styles.content}>
         <Text style={styles.question}>When do you{'\n'}train?</Text>

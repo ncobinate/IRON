@@ -41,7 +41,7 @@ export default function FitnessLevelScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <StepBar current={5} total={5} />
+      <StepBar current={6} total={6} />
 
       <View style={styles.content}>
         <View>
