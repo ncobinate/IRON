@@ -1,14 +1,29 @@
-export const colors = {
-  background: '#0A0A0A',
-  surface: '#141414',
-  card: '#1C1C1C',
+export const darkColors = {
+  background: '#070710',
+  surface: '#0e0e1a',
+  card: '#13131f',
   primary: '#E8FF47',
   primaryDark: '#C8E000',
   text: '#FFFFFF',
-  textSecondary: '#888888',
-  textMuted: '#444444',
-  border: '#2A2A2A',
+  textSecondary: '#8888aa',
+  textMuted: '#3a3a55',
+  border: '#1e1e32',
   error: '#FF4747',
+  scheme: 'dark',
+};
+
+export const lightColors = {
+  background: '#F4F4F8',
+  surface: '#FFFFFF',
+  card: '#FFFFFF',
+  primary: '#4B6EF5',
+  primaryDark: '#3354D4',
+  text: '#0A0A15',
+  textSecondary: '#555570',
+  textMuted: '#AAAACC',
+  border: '#E0E0EC',
+  error: '#D93030',
+  scheme: 'light',
 };
 
 export const spacing = {

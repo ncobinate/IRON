@@ -1,7 +1,8 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useEffect, useState } from 'react';
 import { getProfile } from '../storage/userProfile';
+import { useTheme } from '../theme/ThemeContext';
 
 import LoadingScreen from '../screens/onboarding/LoadingScreen';
 import UnitSelectionScreen from '../screens/onboarding/UnitSelectionScreen';
@@ -16,6 +17,7 @@ import MainScreen from '../screens/MainScreen';
 const Stack = createStackNavigator();
 
 export default function Navigation() {
+  const { colors, scheme } = useTheme();
   const [initialRoute, setInitialRoute] = useState(null);
 
   useEffect(() => {
@@ -26,8 +28,17 @@ export default function Navigation() {
 
   if (!initialRoute) return null;
 
+  const navTheme = {
+    ...(scheme === 'dark' ? DarkTheme : DefaultTheme),
+    colors: {
+      ...(scheme === 'dark' ? DarkTheme.colors : DefaultTheme.colors),
+      background: colors.background,
+      card: colors.surface,
+    },
+  };
+
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Stack.Navigator
         initialRouteName={initialRoute}
         screenOptions={{ headerShown: false, animation: 'slide_from_right' }}

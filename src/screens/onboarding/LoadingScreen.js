@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
-import { colors, font } from '../../theme';
+import { useTheme } from '../../theme/ThemeContext';
+import IronLogo from '../../components/IronLogo';
 
 export default function LoadingScreen({ navigation }) {
+  const { colors, font, spacing } = useTheme();
   const opacity = useRef(new Animated.Value(0)).current;
   const scale = useRef(new Animated.Value(0.85)).current;
 
@@ -22,32 +24,23 @@ export default function LoadingScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.background }]}>
       <Animated.View style={[styles.logoWrap, { opacity, transform: [{ scale }] }]}>
-        <Text style={styles.logo}>IRON</Text>
-        <Text style={styles.tagline}>Your body. Your data. Your coach.</Text>
+        <IronLogo size={96} />
+        <Text style={[styles.wordmark, { color: colors.primary, letterSpacing: 10, fontSize: font.sizes.xxl, fontWeight: font.weights.black }]}>
+          IRON
+        </Text>
+        <Text style={[styles.tagline, { color: colors.textSecondary, fontSize: font.sizes.sm }]}>
+          Your body. Your data. Your coach.
+        </Text>
       </Animated.View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  logoWrap: { alignItems: 'center', gap: 12 },
-  logo: {
-    fontSize: 80,
-    fontWeight: font.weights.black,
-    color: colors.primary,
-    letterSpacing: 10,
-  },
-  tagline: {
-    fontSize: font.sizes.md,
-    color: colors.textSecondary,
-    letterSpacing: 1,
-  },
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  logoWrap: { alignItems: 'center', gap: 16 },
+  wordmark: {},
+  tagline: { letterSpacing: 0.5 },
 });

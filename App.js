@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
+import { ThemeProvider } from './src/theme/ThemeContext';
 import Navigation from './src/navigation';
 
 export default function App() {
   return (
-    <>
-      <StatusBar style="light" />
+    <ThemeProvider>
+      <StatusBar style="auto" />
       <Navigation />
-    </>
+    </ThemeProvider>
   );
 }
